@@ -77,7 +77,7 @@ sequenceDiagram
   participant CS as Client Service
   participant DB as Database
 
-  Note over User,DB: change user
+  Note over User,DB: Обновление пользователя
   User ->>+ CS: change user
   CS ->>+ DB: update
   DB ->>- CS: user_data
