@@ -1,0 +1,20 @@
+logging:
+  level:
+    ROOT: INFO
+    com.otus: INFO
+    org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
+  pattern:
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %class{0}:%line - %msg%n"
+  file:
+    name: ./logs/simple-service.log
+
+server:
+  port: 8080
+
+spring:
+  application:
+    name: simple-service
+management:
+  endpoints:
+    web:
+      base-path: /
