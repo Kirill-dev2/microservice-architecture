@@ -3,10 +3,10 @@ kind: Service
 metadata:
   name: otus-hw03-service
   labels:
-    app: otus-hw03
+    app: simple-service
 spec:
   selector:
-    app: otus-hw03
+    app: simple-service
   type: NodePort
   ports:
     - port: 80

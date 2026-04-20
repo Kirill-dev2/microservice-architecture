@@ -3,13 +3,13 @@ kind: Deployment
 metadata:
   name: otus-hw03-deploy
   labels:
-    app: otus-hw03
+    app: simple-service
 spec:
   # Минимум 2 реплики требованию ДЗ
   replicas: 2
   selector:
     matchLabels:
-      app: otus-hw03
+      app: simple-service
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -18,7 +18,7 @@ spec:
   template:
     metadata:
       labels:
-        app: otus-hw03
+        app: simple-service
     spec:
       containers:
         - name: simple-service

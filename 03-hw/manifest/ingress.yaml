@@ -17,7 +17,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: otus-hw03
+                name: otus-hw03-service
                 port:
                   number: 8000
           # Правило для корня
@@ -25,6 +25,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: otus-hw03
+                name: otus-hw03-service
                 port:
                   number: 80  
