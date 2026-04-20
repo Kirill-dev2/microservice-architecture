@@ -19,7 +19,7 @@ spec:
               service:
                 name: otus-hw03-service
                 port:
-                  number: 8000
+                  number: 80
           # Правило для корня
           - path: /
             pathType: Prefix

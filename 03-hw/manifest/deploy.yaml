@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: simple-service
-          image: kornakovkv/otus-hw02:v1
+          image: kornakovkv/otus-hw02:v2
           ports:
             - containerPort: 8000
           livenessProbe:
