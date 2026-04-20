@@ -22,5 +22,17 @@
 ## 
 
 ```shell
-kubectl apply -f manifest/.
+minikube start --vm-driver=docker
+
+ minikube status
+ 
+ minikube dashboard
+
+kubectl apply -f 03-hw/manifest/.
+
+kubectl delete -f 03-hw/manifest/.
+
 ```
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.1/deploy/static/provider/baremetal/deploy.yaml
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.13.10/config/manifests/metallb-native.yaml
