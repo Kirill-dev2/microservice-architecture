@@ -9,7 +9,7 @@ logging:
     name: ./logs/simple-service.log
 
 server:
-  port: 8080
+  port: 8000
 
 spring:
   application:
