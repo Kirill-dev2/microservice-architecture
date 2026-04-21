@@ -24,44 +24,41 @@
 minikube start --driver=docker
 minikube status
 ```
-
+![status.png](img%2Fstatus.png)
 ## Установка Addons.
 ```shell
 minikube addons list
 minikube addons enable ingress
 minikube addons enable ingress-dns
 ```
-
-## Установка nginx-ingress.
-```shell
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
-```
+![addon.png](img%2Faddon.png)
 ## Проверям установку nginx-ingress.
 ```shell
 kubectl get pods -n ingress-nginx
 kubectl get svc -n ingress-nginx
 ```
-
+![ingress.png](img%2Fingress.png)
 ## Запуск tunnel, dashboard.
 ```shell
 minikube dashboard
 minikube tunnel
 ```
 
-## Деплой приложения
-[deploy.yaml](manifest%2Fdeploy.yaml)
-
-[ingress.yaml](manifest%2Fingress.yaml)
-
-[service.yaml](manifest%2Fservice.yaml)
+## Деплой
+* [deploy.yaml](manifest%2Fdeploy.yaml)
+* [ingress.yaml](manifest%2Fingress.yaml)
+* [service.yaml](manifest%2Fservice.yaml)
 ```shell
 kubectl apply -f 03-hw/manifest/.
 ```
-
+![deploy.png](img%2Fdeploy.png)
 
 ## Проверка работоспособности
 ```shell
 curl http://arch.homework/health
+```
+```text
+{"status":"UP","groups":["liveness","readiness"]}
 ```
 
 ## Удаление
