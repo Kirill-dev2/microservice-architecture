@@ -19,30 +19,30 @@
    - ссылку на github c манифестами (в виде pull request). Манифесты должны лежать в одной директории, так чтобы можно было их все применить одной командой kubectl apply -f .
    - url, по которому можно будет получить ответ от сервиса (либо тест в postmanе).
 
-## Запуск Minikube
+## Запуск Minikube.
 ```shell
-minikube start --vm-driver=docker
+minikube start --driver=docker
 minikube status
 ```
 
-## Установка Addons
+## Установка Addons.
 ```shell
 minikube addons list
 minikube addons enable ingress
 minikube addons enable ingress-dns
 ```
 
-## Установка nginx-ingress
+## Установка nginx-ingress.
 ```shell
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
 ```
-## Проверям установку.
+## Проверям установку nginx-ingress.
 ```shell
 kubectl get pods -n ingress-nginx
 kubectl get svc -n ingress-nginx
 ```
 
-## Запуск tunnel, dashboard
+## Запуск tunnel, dashboard.
 ```shell
 minikube dashboard
 minikube tunnel
@@ -67,6 +67,6 @@ curl http://arch.homework/health
 ## Удаление
 ```shell
 kubectl delete -f 03-hw/manifest/.
-
+minikube stop
 minikube delete --purge
 ```

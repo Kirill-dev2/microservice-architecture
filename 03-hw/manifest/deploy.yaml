@@ -21,7 +21,7 @@ spec:
         app: simple-service
     spec:
       containers:
-        - name: simple-application
+        - name: simple-service
           image: kornakovkv/otus-hw02:v2
           ports:
             - containerPort: 8000
