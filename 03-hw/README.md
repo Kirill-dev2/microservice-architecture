@@ -19,20 +19,54 @@
    - ссылку на github c манифестами (в виде pull request). Манифесты должны лежать в одной директории, так чтобы можно было их все применить одной командой kubectl apply -f .
    - url, по которому можно будет получить ответ от сервиса (либо тест в postmanе).
 
-## 
-
+## Запуск Minikube
 ```shell
 minikube start --vm-driver=docker
-
- minikube status
- 
- minikube dashboard
-
-kubectl apply -f 03-hw/manifest/.
-
-kubectl delete -f 03-hw/manifest/.
-
+minikube status
 ```
 
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.1/deploy/static/provider/baremetal/deploy.yaml
-kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.13.10/config/manifests/metallb-native.yaml
+## Установка Addons
+```shell
+minikube addons list
+minikube addons enable ingress
+minikube addons enable ingress-dns
+```
+
+## Установка nginx-ingress
+```shell
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
+```
+## Проверям установку.
+```shell
+kubectl get pods -n ingress-nginx
+kubectl get svc -n ingress-nginx
+```
+
+## Запуск tunnel, dashboard
+```shell
+minikube dashboard
+minikube tunnel
+```
+
+## Деплой приложения
+[deploy.yaml](manifest%2Fdeploy.yaml)
+
+[ingress.yaml](manifest%2Fingress.yaml)
+
+[service.yaml](manifest%2Fservice.yaml)
+```shell
+kubectl apply -f 03-hw/manifest/.
+```
+
+
+## Проверка работоспособности
+```shell
+curl http://arch.homework/health
+```
+
+## Удаление
+```shell
+kubectl delete -f 03-hw/manifest/.
+
+minikube delete --purge
+```

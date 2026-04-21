@@ -6,6 +6,7 @@ metadata:
     nginx.ingress.kubernetes.io/proxy-connect-timeout: "10"
     nginx.ingress.kubernetes.io/proxy-read-timeout: "30"
     nginx.ingress.kubernetes.io/proxy-send-timeout: "30"
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
   rules:
@@ -19,12 +20,4 @@ spec:
               service:
                 name: otus-hw03-service
                 port:
-                  number: 8000
-          # Правило для корня
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: otus-hw03-service
-                port:
-                  number: 80  
+                  number: 80
