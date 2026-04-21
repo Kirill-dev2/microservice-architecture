@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: otus-hw03-deploy
+  labels:
+    app: simple-service
+spec:
+  # Минимум 2 реплики требованию ДЗ
+  replicas: 2
+  selector:
+    matchLabels:
+      app: simple-service
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: simple-service
+    spec:
+      containers:
+        - name: simple-service
+          image: kornakovkv/otus-hw02:v2
+          ports:
+            - containerPort: 8000
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 5  # Ждать 5 сек после старта
+            periodSeconds: 10       # Проверять каждые 10 сек
+            failureThreshold: 3     # 3 неудачи = перезапуск
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 3
+          resources:
+            requests:
+              cpu: "1"
+              memory: "1Gi"
+            limits:
+              cpu: "1"
+              memory: "2Gi"
