@@ -68,5 +68,4 @@ curl http://arch.homework/health
 ```shell
 kubectl delete -f 03-hw/manifest/.
 minikube stop
-minikube delete --purge
 ```
