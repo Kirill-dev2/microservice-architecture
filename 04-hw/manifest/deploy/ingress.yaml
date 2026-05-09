@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: user-service-ingress
+  labels:
+    app: user-service
+  namespace: default
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: arch.homework
+      http:
+        paths:
+          # Правило для /health
+          - path: /health
+            pathType: Exact
+            backend:
+              service:
+                name: user-service-svc
+                port:
+                  number: 80
+          - path: /api/v1/user
+            pathType: Prefix
+            backend:
+              service:
+                name: user-service-svc
+                port:
+                  number: 80
