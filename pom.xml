@@ -16,7 +16,7 @@
   <version>1.0.0</version>
   <packaging>pom</packaging>
   <modules>
-    <module>simple-service</module>
+    <module>user-service</module>
   </modules>
 
   <properties>

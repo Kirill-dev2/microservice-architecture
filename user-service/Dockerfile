@@ -5,6 +5,6 @@ RUN mvn -f /app/pom.xml clean package -Dmaven.test.skip=true
 
 FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
-COPY --from=builder /app/simple-service/target/simple-service-*.jar /opt/appication.jar
+COPY --from=builder /app/user-service/target/user-service-*.jar /opt/appication.jar
 EXPOSE 8000
 ENTRYPOINT ["java", "-jar", "/opt/appication.jar"]

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: user-service-config
+  labels:
+    app: user-service
+data:
+  # Конфигурация PostgreSQL (не секретные данные)
+  DB_HOST: "postgres-postgresql"
+  DB_PORT: "5432"
+  DB_NAME: "postgres"
+  DB_URL: "jdbc:postgresql://postgres-postgresql:5432/postgres"
